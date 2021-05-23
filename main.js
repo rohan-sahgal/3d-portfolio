@@ -2,6 +2,7 @@ import "./style.css";
 
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+import { MeshStandardMaterial } from "three";
 
 // Will always need 1. Scene 2. Camera 3. Renderer
 
@@ -17,6 +18,9 @@ const camera = new THREE.PerspectiveCamera(
   1000
 );
 
+// Currently, camera is in middle of screen
+camera.position.setZ(30);
+
 // Renderer renders elements of the scene
 const renderer = new THREE.WebGLRenderer({
   canvas: document.querySelector("#bg"),
@@ -25,10 +29,7 @@ const renderer = new THREE.WebGLRenderer({
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
 
-// Currently, camera is in middle of screen
-camera.position.setZ(30);
-
-renderer.render(scene, camera);
+// renderer.render(scene, camera);
 
 // OBJECT CREATION
 
@@ -49,16 +50,41 @@ const ambientLight = new THREE.AmbientLight(0xffffff);
 scene.add(ambientLight);
 
 const lightHelper = new THREE.PointLightHelper(pointLight);
-const gridHelper = new THREE.GridHelper();
-// scene.add(lightHelper);
+const gridHelper = new THREE.GridHelper(200, 50);
+// scene.add(lightHelper, gridHelper);
 
+const controls = new OrbitControls(camera, renderer.domElement);
+
+function addStar() {
+  const geometry = new THREE.SphereGeometry(0.15, 24, 24);
+  const material = new THREE.MeshStandardMaterial({ color: 0xeeeeee });
+  const star = new THREE.Mesh(geometry, material);
+
+  const [x, y, z] = Array(3)
+    .fill()
+    .map(() => THREE.MathUtils.randFloatSpread(100));
+
+  star.position.set(x, y, z);
+  scene.add(star);
+}
+
+Array(200).fill().forEach(addStar);
+
+// Can pass in callback function here to be notified when image loads
+const spaceTexture = new THREE.TextureLoader().load("space.jpg");
+scene.background = spaceTexture;
+
+// Animation Loop
 function animate() {
   requestAnimationFrame(animate);
-  renderer.render(scene, camera);
 
   torus.rotation.x += 0.005;
   torus.rotation.y += 0.0025;
   torus.rotation.z += 0.005;
+
+  controls.update();
+
+  renderer.render(scene, camera);
 }
 
 animate();
