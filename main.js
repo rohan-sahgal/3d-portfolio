@@ -30,3 +30,23 @@ camera.position.setZ(30);
 renderer.render(scene, camera);
 
 // OBJECT CREATION
+
+const geometry = new THREE.TorusKnotGeometry(10, 3, 100, 16);
+const material = new THREE.MeshBasicMaterial({
+  color: 0x00aaff,
+  wireframe: true,
+});
+const torus = new THREE.Mesh(geometry, material);
+
+scene.add(torus);
+
+function animate() {
+  requestAnimationFrame(animate);
+  renderer.render(scene, camera);
+
+  torus.rotation.x += 0.01;
+  torus.rotation.y += 0.005;
+  torus.rotation.z += 0.01;
+}
+
+animate();
