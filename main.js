@@ -116,16 +116,6 @@ var meshInner = new THREE.Mesh(ringGeometry, materialInner);
 ring.add(meshInner);
 scene.add(ring);
 
-// const ring = new THREE.Mesh(
-//   ,
-//   new THREE.MeshStandardMaterial({
-//     color: 0x888888,
-//     side: THREE.DoubleSide,
-//     map: ringTexture,
-//     // wireframe: true,
-//   })
-// );
-
 scene.add(ring);
 ring.position.z = -20;
 ring.position.x = -10;
@@ -151,13 +141,13 @@ moon.position.setX(-10);
 function moveCamera() {
   const t = document.body.getBoundingClientRect().top;
   // console.log(t);
-  moon.rotation.x += 0.05;
+  // moon.rotation.x += 0.05;
   moon.rotation.y += 0.075;
-  moon.rotation.z += 0.05;
+  // moon.rotation.z += 0.05;
 
-  // rohanPlane.rotation.y += 0.01;
-  rohanPlane.rotation.z += 3 / 4;
-  // console.log(rohanPlane.rotation.z);
+  rohanPlane.rotation.z += Math.PI / 16;
+  rohanPlane.rotation.y += Math.PI / 8;
+  rohanPlane.rotation.x += Math.PI / 16;
 
   if (t <= 0) {
     camera.position.z = t * -0.01;
@@ -176,12 +166,64 @@ document.body.onscroll = moveCamera;
 function animate() {
   requestAnimationFrame(animate);
 
+  const canvas = renderer.domElement;
+  camera.aspect = canvas.clientWidth / canvas.clientHeight;
+  camera.updateProjectionMatrix();
+
   // torus.rotation.x += 0.005;
   // torus.rotation.y += 0.0025;
   // torus.rotation.z += 0.005;
+  //
 
-  ring.rotation.y += 0.0025;
+  //between 0.001 and pi I want it to rotate counter clockwise
+  //between pi and 2pi i want it to rotate clockwise
+  //
+  if (
+    rohanPlane.rotation.z % (2 * Math.PI) > 0.001 &&
+    rohanPlane.rotation.z % (2 * Math.PI) <= Math.PI
+  ) {
+    rohanPlane.rotation.z -= 0.005;
+  } else if (
+    rohanPlane.rotation.z % (2 * Math.PI) > Math.PI &&
+    rohanPlane.rotation.z % (2 * Math.PI) < 2 * Math.PI
+  ) {
+    rohanPlane.rotation.z += 0.005;
+  }
+
+  if (
+    rohanPlane.rotation.x % (2 * Math.PI) > 0.001 &&
+    rohanPlane.rotation.x % (2 * Math.PI) <= Math.PI
+  ) {
+    rohanPlane.rotation.x -= 0.005;
+  } else if (
+    rohanPlane.rotation.x % (2 * Math.PI) > Math.PI &&
+    rohanPlane.rotation.x % (2 * Math.PI) < 2 * Math.PI
+  ) {
+    rohanPlane.rotation.x += 0.005;
+  }
+
+  if (
+    rohanPlane.rotation.y % (2 * Math.PI) > 0.001 &&
+    rohanPlane.rotation.y % (2 * Math.PI) <= Math.PI
+  ) {
+    rohanPlane.rotation.y -= 0.005;
+  } else if (
+    rohanPlane.rotation.y % (2 * Math.PI) > Math.PI &&
+    rohanPlane.rotation.y % (2 * Math.PI) < 2 * Math.PI
+  ) {
+    rohanPlane.rotation.y += 0.005;
+  }
+
+  console.log(rohanPlane.rotation);
+
+  ring.rotation.y += 0.0035;
+  ring.rotation.z += 0.0005;
   // ring.rotation.x += 0.0025;
+
+  moon.rotation.y += 0.0025;
+
+  // console.log(rohanPlane.rotation.z / Math.PI);
+  // if rohanPlane.rotation.z
 
   controls.update();
 
@@ -189,5 +231,3 @@ function animate() {
 }
 
 animate();
-
-moveCamera();
