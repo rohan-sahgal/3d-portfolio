@@ -1,4 +1,10 @@
 import "./style.css";
+import rohanURL from "./src/rohan.jpg";
+import moonURL from "./src/moon.jpg";
+import haloInteriorURL from "./src/halo-ring-texture.jpg";
+import haloExteriorURL from "./src/ring.png";
+import normalURL from "./src/normal.jpg";
+import spaceURL from "./src/space.jpg";
 
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
@@ -72,10 +78,10 @@ function addStar() {
 Array(500).fill().forEach(addStar);
 
 // Can pass in callback function here to be notified when image loads
-const spaceTexture = new THREE.TextureLoader().load("space.jpg");
+const spaceTexture = new THREE.TextureLoader().load(spaceURL);
 // scene.background = spaceTexture;
 
-const rohanTexture = new THREE.TextureLoader().load("rohan.jpg");
+const rohanTexture = new THREE.TextureLoader().load(rohanURL);
 const rohanPlane = new THREE.Mesh(
   new THREE.PlaneGeometry(0.75, 0.75, 1),
   new THREE.MeshBasicMaterial({ map: rohanTexture, side: THREE.DoubleSide })
@@ -89,18 +95,18 @@ rohanPlane.position.z -= 1;
 
 // Ring
 
-const ringTexture = new THREE.TextureLoader().load("halo-ring-texture.jpg");
-const normalTexture = new THREE.TextureLoader().load("normal.jpg");
+const ringTexture = new THREE.TextureLoader().load(haloInteriorURL);
+const normalTexture = new THREE.TextureLoader().load(normalURL);
 
 const ringGeometry = new THREE.CylinderGeometry(8, 8, 1, 50, 1, true);
 const materialOuter = new THREE.MeshBasicMaterial({
-  map: new THREE.TextureLoader().load("halo-ring-texture.jpg"),
+  map: ringTexture,
   // normalMap: normalTexture,
   side: THREE.DoubleSide,
 });
 
 const materialInner = new THREE.MeshBasicMaterial({
-  map: new THREE.TextureLoader().load("ring.png"),
+  map: new THREE.TextureLoader().load(haloExteriorURL),
   // color: 0x888888,
 });
 
@@ -127,7 +133,7 @@ ring.position.y = -5;
 
 //Moon
 
-const moonTexture = new THREE.TextureLoader().load("moon.jpg");
+const moonTexture = new THREE.TextureLoader().load(moonURL);
 // const normalTexture = new THREE.TextureLoader().load("normal.jpg");
 
 const moon = new THREE.Mesh(
@@ -144,14 +150,14 @@ moon.position.setX(-10);
 
 function moveCamera() {
   const t = document.body.getBoundingClientRect().top;
-  console.log(t);
+  // console.log(t);
   moon.rotation.x += 0.05;
   moon.rotation.y += 0.075;
   moon.rotation.z += 0.05;
 
   // rohanPlane.rotation.y += 0.01;
   rohanPlane.rotation.z += 3 / 4;
-  console.log(rohanPlane.rotation.z);
+  // console.log(rohanPlane.rotation.z);
 
   if (t <= 0) {
     camera.position.z = t * -0.01;

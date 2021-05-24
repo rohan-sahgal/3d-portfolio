@@ -12,7 +12,5 @@
   "dependencies": {
     "three": "^0.128.0"
   },
-  "scripts": {
-    "start": "node main.js"
-  }
+  "type": "module"
 }
