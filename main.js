@@ -5,11 +5,20 @@ import haloInteriorURL from "./src/halo-ring-texture.jpg";
 import haloExteriorURL from "./src/ring.png";
 import normalURL from "./src/normal.jpg";
 import spaceURL from "./src/space.jpg";
+import faviconURL from "./src/favicon-32x32.png";
 
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { PlaneGeometry, BoxGeometry, MeshStandardMaterial } from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
+
+var link = document.querySelector("link[rel~='icon']");
+if (!link) {
+  link = document.createElement("link");
+  link.rel = "icon";
+  document.getElementsByTagName("head")[0].appendChild(link);
+}
+link.href = faviconURL;
 
 // Will always need 1. Scene 2. Camera 3. Renderer
 
