@@ -88,13 +88,13 @@ function addStar() {
 
   const [x, y, z] = Array(3)
     .fill()
-    .map(() => THREE.MathUtils.randFloatSpread(100, 50));
+    .map(() => THREE.MathUtils.randFloatSpread(125, 50));
 
   star.position.set(x, y, z);
   scene.add(star);
 }
 
-Array(500).fill().forEach(addStar);
+Array(700).fill().forEach(addStar);
 
 // Can pass in callback function here to be notified when image loads
 const spaceTexture = new THREE.TextureLoader().load(spaceURL);
@@ -251,3 +251,7 @@ function animate() {
 }
 
 animate();
+
+function onDocumentMouseMove(event) {
+  console.log("MOVE");
+}

@@ -1,5 +1,9 @@
 @import url("https://use.typekit.net/jmk3xov.css");
 
+* {
+  scroll-behavior: smooth;
+}
+
 canvas {
   position: fixed;
   top: 0;
@@ -8,6 +12,24 @@ canvas {
 
 body {
   background-color: black;
+}
+
+nav ul {
+  list-style: none;
+  position: fixed;
+  left: 10px;
+  top: 10px;
+}
+
+nav li {
+  margin-bottom: 3rem;
+}
+
+nav li * {
+  color: white;
+  text-decoration: none;
+  list-style: none;
+  font-size: 1.5rem;
 }
 
 :root {
@@ -48,7 +70,7 @@ canvas {
 }
 
 header {
-  background: var(--dark-bg);
+  background: rgba(38, 63, 63, 0.9);
   grid-column: 2 / span 5;
   font-size: 2.5rem;
   padding: 2rem;
@@ -58,7 +80,8 @@ header {
 section {
   grid-column: 2 / 8;
   padding: 1rem;
-  background: var(--dark-bg);
+  /* background: var(--dark-bg); */
+  background: rgba(38, 63, 63, 0.9);
   font-size: 1.25rem;
   line-height: 1.5;
   margin-bottom: var(--spacing);
@@ -73,12 +96,22 @@ blockquote {
 
 blockquote p {
   color: black;
-  background-color: white;
-  font-size: 4rem;
+  background: rgb(220, 255, 255);
+  font-size: 3rem;
+  font-family: "Courier New", Courier, monospace;
   display: inline;
   line-height: 1;
 }
 
-.left {
+blockquote p a {
+  color: blue;
+  text-decoration: none;
+}
+
+.right {
   grid-column: 6 / 12;
+}
+
+.left {
+  grid-column: 2 / 8;
 }
