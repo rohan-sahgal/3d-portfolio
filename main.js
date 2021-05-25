@@ -12,6 +12,8 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { PlaneGeometry, BoxGeometry, MeshStandardMaterial } from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 
+// FAVICON LOGIC
+
 var link = document.querySelector("link[rel~='icon']");
 if (!link) {
   link = document.createElement("link");
@@ -20,22 +22,25 @@ if (!link) {
 }
 link.href = faviconURL;
 
-// Will always need 1. Scene 2. Camera 3. Renderer
+// SCENE, CAMERA, RENDERER
 
-// Container that holds all objects, cameras, lights
+/*    In Three.js, we will always need:
+          1. Scene 
+          2. Camera 
+          3. Renderer                     */
+
+//  Scene: container that holds all objects, cameras, lights
 const scene = new THREE.Scene();
 
 // Perspective camera: mimics human eyes
-// (FOV, aspect ratio, view frustrum start, view frustrum end)
+// Arguments: (FOV, aspect ratio, view frustrum start, view frustrum end)
+// Currently, camera position is in middle of screen (0, 0, 0)
 const camera = new THREE.PerspectiveCamera(
   75,
   window.innerWidth / window.innerHeight,
   0.1,
   1000
 );
-
-// Currently, camera is in middle of screen
-// camera.position.setZ(30);
 
 // Renderer renders elements of the scene
 const renderer = new THREE.WebGLRenderer({
@@ -44,8 +49,6 @@ const renderer = new THREE.WebGLRenderer({
 
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
-
-// renderer.render(scene, camera);
 
 // OBJECT CREATION
 
@@ -154,9 +157,11 @@ function moveCamera() {
   moon.rotation.y += 0.075;
   // moon.rotation.z += 0.05;
 
-  rohanPlane.rotation.z += Math.PI / 16;
-  rohanPlane.rotation.y += Math.PI / 8;
-  rohanPlane.rotation.x += Math.PI / 16;
+  rohanPlane.rotation.z += Math.PI / 8;
+  rohanPlane.rotation.y += Math.PI / 32;
+  rohanPlane.rotation.x += Math.PI / 32;
+
+  // ring.rotation.z +=
 
   if (t <= 0) {
     camera.position.z = t * -0.01;
@@ -178,6 +183,9 @@ function animate() {
   const canvas = renderer.domElement;
   camera.aspect = canvas.clientWidth / canvas.clientHeight;
   camera.updateProjectionMatrix();
+
+  renderer.setPixelRatio(window.devicePixelRatio);
+  renderer.setSize(window.innerWidth, window.innerHeight);
 
   // torus.rotation.x += 0.005;
   // torus.rotation.y += 0.0025;
