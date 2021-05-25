@@ -110,7 +110,7 @@ const rohanPlane = new THREE.Mesh(
 
 scene.add(rohanPlane);
 
-rohanPlane.position.x += 0.3;
+rohanPlane.position.x += 0.4;
 rohanPlane.position.z -= 1;
 rohanPlane.position.y += 0.1;
 
