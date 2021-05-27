@@ -14,11 +14,16 @@ body {
   background-color: black;
 }
 
-nav ul {
-  list-style: none;
+nav {
+  /* grid-column: 13/ 16; */
   position: fixed;
   left: 10px;
-  top: 10px;
+  top: 30px;
+  /* position: fixed; */
+}
+
+nav ul {
+  list-style: none;
 }
 
 nav li {
@@ -65,6 +70,15 @@ blockquote {
   font-style: normal;
 }
 
+h4 {
+  margin-bottom: 0px;
+  font-size: 1.5rem;
+}
+
+#about p {
+  /* margin: 0px; */
+}
+
 canvas {
   position: fixed;
   top: 0;
@@ -73,14 +87,14 @@ canvas {
 
 header {
   background: rgba(38, 63, 63, 0.9);
-  grid-column: 3 / span 5;
+  grid-column: 3 / span 6;
   font-size: 2.5rem;
   padding: 2rem;
   margin-bottom: var(--spacing);
 }
 
 section {
-  grid-column: 2 / 8;
+  grid-column: 3 / 11;
   padding: 1rem;
   /* background: var(--dark-bg); */
   background: rgba(38, 63, 63, 0.9);
@@ -89,10 +103,24 @@ section {
   margin-bottom: var(--spacing);
 }
 
+#education {
+  padding: 0;
+  margin-top: 75px;
+  background: none;
+  font-size: 1.25rem;
+  line-height: 1.5;
+  margin-bottom: 0;
+}
+
+/* #education p {
+  position: relative;
+  left: 25px;
+} */
+
 blockquote {
   margin: 0;
   padding: 0;
-  grid-column: 2 / span 9;
+  grid-column: 7 / span 14;
   margin-bottom: var(--spacing);
 }
 
@@ -110,12 +138,17 @@ blockquote p a {
   text-decoration: none;
 }
 
+p a {
+  color: lightblue;
+  text-decoration: none;
+}
+
 .right {
-  grid-column: 6 / 12;
+  grid-column: 7 / 15;
 }
 
 .left {
-  grid-column: 2 / 8;
+  grid-column: 3 / 10;
 }
 
 .links {
@@ -130,9 +163,33 @@ blockquote p a {
 }
 
 #github {
-  width: 40px;
+  width: 35px;
+  filter: invert(1);
 }
 
 #linkedin {
-  width: 40px;
+  width: 35px;
+  filter: invert(1);
+}
+
+.growImg {
+  transition: all 0.2s ease-in-out;
+}
+
+.growImg:hover {
+  transform: scale(1.1);
+}
+
+.growText {
+  transition: all 0.1s ease-in-out;
+  font-size: 1.5rem;
+}
+
+.growText:hover {
+  font-size: 1.7rem;
+}
+
+#🌑 {
+  margin-top: var(--spacing);
+  margin-bottom: 100px;
 }

@@ -118,18 +118,15 @@ rohanPlane.position.y += 0.1;
 
 const innerRingTexture = new THREE.TextureLoader().load(haloInteriorURL);
 const outerRingTexture = new THREE.TextureLoader().load(haloExteriorURL);
-const normalTexture = new THREE.TextureLoader().load(normalURL);
 
 const ringGeometry = new THREE.CylinderGeometry(8, 8, 1, 50, 1, true);
 const materialOuter = new THREE.MeshBasicMaterial({
   map: innerRingTexture,
-  normalMap: normalTexture,
   side: THREE.DoubleSide,
 });
 
 const materialInner = new THREE.MeshBasicMaterial({
   map: outerRingTexture,
-  normalMap: normalTexture,
 });
 
 var ring = new THREE.Mesh(ringGeometry, materialOuter);
@@ -146,6 +143,7 @@ ring.position.y = -5;
 //Moon
 
 const moonTexture = new THREE.TextureLoader().load(moonURL);
+const normalTexture = new THREE.TextureLoader().load(normalURL);
 
 const moon = new THREE.Mesh(
   new THREE.SphereGeometry(3, 32, 32),
@@ -181,8 +179,6 @@ function moveCamera() {
 
 document.body.onscroll = moveCamera;
 
-var test = 0;
-
 // Animation Loop
 function animate() {
   requestAnimationFrame(animate);
@@ -193,12 +189,6 @@ function animate() {
 
   renderer.setPixelRatio(window.devicePixelRatio);
   renderer.setSize(window.innerWidth, window.innerHeight);
-
-  if (test % 100 == 0) {
-    console.log(window.innerWidth);
-    console.log(rohanPlane.rotation);
-  }
-  test++;
 
   // Rotation logic for rohanplane
   // Between 0.001 and pi I want it to rotate counter clockwise
