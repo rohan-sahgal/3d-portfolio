@@ -3,6 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="./src/favicon-32x32.png" />
+    <script
+      src="https://kit.fontawesome.com/c77fc07f68.js"
+      crossorigin="anonymous"
+    ></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rohan Sahgal</title>
   </head>
@@ -10,11 +14,17 @@
     <canvas id="bg"></canvas>
 
     <main>
+      <!-- Header section -->
+
       <header id="#">
         <h1>Rohan Sahgal</h1>
         <h3>Software Developer</h3>
         <p>🙋‍♂️ Status: Seeking fresh grad opportunities</p>
       </header>
+
+      <!-- END header section -->
+
+      <!-- Navbar section -->
 
       <nav>
         <ul>
@@ -26,27 +36,49 @@
         </ul>
       </nav>
 
+      <!-- END Navbar section -->
+
+      <!-- Links section -->
+
       <div class="links">
         <ul>
           <li>
-            <a href="https://www.linkedin.com/in/rohan-sahgal/"
+            <a href="mailto:rohansahgal@hotmail.com" target="_blank"
+              ><img src="./src/email.svg" id="email" class="growImg"
+            /></a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/in/rohan-sahgal/" target="_blank"
               ><img src="./src/linkedin.svg" id="linkedin" class="growImg"
             /></a>
           </li>
           <li>
-            <a href="https://github.com/rohan-sahgal/"
+            <a href="https://github.com/rohan-sahgal/" target="_blank"
               ><img src="./src/github.svg" id="github" class="growImg"
             /></a>
           </li>
         </ul>
       </div>
 
+      <!-- END Links section -->
+
+      <!-- First quote -->
+
       <blockquote>
         <p>
-          Discovering <a href="https://threejs.org/">Three.js</a> has been
-          extremely fun.
+          <!-- Discovering
+          <a href="https://threejs.org/" target="_blank">Three.js</a> has been
+          extremely fun. -->
+          Not optimized for mobile. Go ahead, try it. I dare you.
         </p>
+        <br />
+        <br />
+        <p id="hatoldyou">Ha, told you.</p>
       </blockquote>
+
+      <!-- END First quote -->
+
+      <!-- About/education section -->
 
       <section id="about">
         <h2>📜 About me</h2>
@@ -63,13 +95,14 @@
         <p>
           I'm extremely passionate about both science (natural and
           technological) and science fiction (hence the giant
-          <a href="https://www.halopedia.org/Halo_Array">ring</a>).
+          <a href="https://www.halopedia.org/Halo_Array" target="_blank">ring</a
+          >).
         </p>
 
         <section id="education">
           <h2>🏫 Education</h2>
           <div class="box">
-            <h4>University of Toronto, Canada</h4>
+            <h4 style="margin-bottom: 5px">University of Toronto, Canada</h4>
             <p>Honours BSc, Computer Science Specialist</p>
             <p style="font-size: 1.1rem">
               2016 - 2021, Graduated with High Distinction
@@ -79,41 +112,119 @@
         </section>
       </section>
 
+      <!-- END About/Education section -->
+
+      <!-- Projects Section -->
       <section class="right" id="projects">
-        <h2>💻 Projects</h2>
+        <div class="container">
+          <h2 class="section-heading">💻 Projects</h2>
+          <project>
+            <div class="title">
+              <h4>
+                URL Shortener
+                <span style="float: right; margin-right: 50px">
+                  <a
+                    href="https://github.com/rohan-sahgal/URL-Shortener"
+                    target="_blank"
+                  >
+                    <i class="fab fa-github"></i>
+                  </a>
+                </span>
+              </h4>
+            </div>
 
-        <ul>
-          <li>test</li>
-        </ul>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </p>
+            <div class="tech">
+              <p class="pill python">Python/Flask</p>
+              <p class="pill shell">Shell</p>
+              <p class="pill cassandra">Cassandra</p>
+              <p class="pill docker">Docker</p>
+              <p class="pill redis">Redis</p>
+            </div>
 
-        <!-- <h2>🏆 Accomplishments</h2> -->
-        <!-- 
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </p> -->
+            <div class="description">
+              <p>
+                Application that shortens URLs given by the user. Created using:
+              </p>
+              <ul>
+                <li>Cassandra as a long-term store</li>
+                <li>Redis for caching</li>
+                <li>Flask/Gunicorn for load balancing</li>
+              </ul>
+            </div>
+          </project>
+
+          <project>
+            <div class="title">
+              <h4>
+                rohan-sahgal.github.io
+                <span style="float: right; margin-right: 50px">
+                  <a
+                    href="https://github.com/rohan-sahgal/3d-portfolio"
+                    target="_blank"
+                  >
+                    <i class="fab fa-github"></i>
+                  </a>
+                </span>
+              </h4>
+            </div>
+
+            <div class="tech">
+              <p class="pill html">HTML</p>
+              <p class="pill css">CSS</p>
+              <p class="pill js">JS</p>
+              <p class="pill vite">Vite</p>
+            </div>
+
+            <div class="description">
+              <p>Personal website created using HTML and CSS.</p>
+
+              <p>3D elements created using Three.js</p>
+              <p>Built using Vite and deployed on Github Pages.</p>
+            </div>
+          </project>
+          <project>
+            <div class="title">
+              <h4>
+                Part-of-Speech Tagger with HMMs
+                <span style="float: right; margin-right: 50px">
+                  <a
+                    href="https://github.com/rohan-sahgal/POS-Tagging-with-HMMs"
+                    target="_blank"
+                  >
+                    <i style="color: white" class="fab fa-github"></i>
+                  </a>
+                </span>
+              </h4>
+            </div>
+
+            <div class="tech">
+              <p class="pill ai">Artificial Intelligence</p>
+              <p class="pill python">Python</p>
+            </div>
+
+            <div class="description">
+              <p>
+                Artificial intelligence program that assigns part-of-speech tags
+                to words in a sequence with >95% accuracy (given proper
+                training).
+              </p>
+              <p>
+                Trained and executed using Hidden Markov Models and a customized
+                variation on the Viterbi Algorithm.
+              </p>
+            </div>
+          </project>
+        </div>
       </section>
+
+      <!-- Second quote -->
 
       <blockquote>
         <p>The best way out is always through <br />-Robert Frost</p>
       </blockquote>
 
       <section class="left" id="work">
-        <h2>🌮 Placeholder</h2>
+        <h2>💼 Work Experience</h2>
 
         <!-- <h3>McDonalds</h3>
         <p>
