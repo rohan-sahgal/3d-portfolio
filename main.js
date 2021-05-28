@@ -154,7 +154,7 @@ const moon = new THREE.Mesh(
 );
 
 scene.add(moon);
-moon.position.z = 30;
+moon.position.z = 33;
 moon.position.setX(-10);
 
 function moveCamera() {
