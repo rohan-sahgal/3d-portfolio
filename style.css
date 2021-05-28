@@ -124,6 +124,10 @@ blockquote {
   margin-bottom: var(--spacing);
 }
 
+.middle {
+  grid-column: 5 / span 8;
+}
+
 blockquote p {
   color: black;
   background: rgba(220, 255, 255, 0.75);
