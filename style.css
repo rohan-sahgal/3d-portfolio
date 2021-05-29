@@ -321,4 +321,28 @@ project hr {
   .links {
     visibility: hidden;
   }
+
+  .right {
+    grid-column: 4 / 15;
+  }
+
+  .left {
+    grid-column: 3 / 14;
+  }
+
+  .middle {
+    grid-column: 4 / 14;
+  }
+
+  header {
+    grid-column: 2 / 13;
+  }
+
+  section {
+    grid-column: 3 / 14;
+  }
+
+  blockquote {
+    grid-column: 6 / 14;
+  }
 }
