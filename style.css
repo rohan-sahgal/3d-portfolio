@@ -90,7 +90,7 @@ header {
   grid-column: 3 / span 6;
   font-size: 2.5rem;
   padding: 2rem;
-  margin-bottom: var(--spacing);
+  margin-bottom: var(--spacing) - 1;
 }
 
 section {
@@ -135,6 +135,16 @@ blockquote p {
   font-family: "Courier New", Courier, monospace;
   display: inline;
   line-height: 1.3;
+}
+
+#🥚 {
+  grid-column: 3 / 8;
+}
+
+#🥚 > h2 {
+  font-family: "Courier New", Courier, monospace;
+  color: red;
+  background-color: rgba(15, 15, 15, 0.6);
 }
 
 blockquote p a {
@@ -215,6 +225,13 @@ project h4 {
   text-align: left;
   margin-top: 1rem;
   margin-bottom: 0.5rem;
+  text-decoration: none;
+  color: white;
+}
+
+project h4 a {
+  text-decoration: inherit;
+  color: inherit;
 }
 
 project ul {

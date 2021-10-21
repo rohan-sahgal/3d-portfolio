@@ -1,5 +1,5 @@
 import "./style.css";
-import rohanURL from "./src/rohan.jpg";
+import rohanURL from "./src/rohan_fancy_square.jpg";
 import moonURL from "./src/moon.jpg";
 import haloInteriorURL from "./src/halo-ring-texture.jpg";
 import haloExteriorURL from "./src/ring.png";
@@ -95,6 +95,43 @@ function addStar() {
 }
 
 Array(700).fill().forEach(addStar);
+
+// EASTER EGG
+
+let linkText = document.getElementById("egg");
+let eggText = document.getElementById("🥚");
+linkText.addEventListener("click", fadeOutEffect);
+
+let count = 0;
+
+function fadeOutEffect() {
+  let fadeTarget = document.getElementById("🥚");
+  let targetChild = fadeTarget.children[0];
+  let start = true;
+  let fadeEffect = setInterval(function () {
+    if (fadeTarget.style.opacity == 0 && start == true) {
+      if (count == 1) {
+        targetChild.innerHTML = "You're already at rohan-sahgal.github.io!";
+      }
+      if (count == 2) {
+        targetChild.innerHTML = "Stop doing that.";
+      }
+      if (count == 3) {
+        targetChild.innerHTML =
+          "You do know what the definition of insanity is, right?";
+        count = 0;
+      }
+      fadeTarget.style.opacity = 1;
+      start = false;
+    }
+    if (fadeTarget.style.opacity > 0) {
+      fadeTarget.style.opacity -= 0.01;
+    } else {
+      clearInterval(fadeEffect);
+    }
+  }, 50);
+  count += 1;
+}
 
 // Can pass in callback function here to be notified when image loads
 const spaceTexture = new THREE.TextureLoader().load(spaceURL);
